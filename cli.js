@@ -227,6 +227,11 @@ process.on('uncaughtException', function(err) {
     ui.setLogLevel(args[logArgIndex + 1]);
     args.splice(logArgIndex, 2);
   }
+  var nosaveArgIndex = args.indexOf('--nosave');
+  if (nosaveArgIndex > -1) {
+    config.disableSave();
+    args.splice(nosaveArgIndex, 1);
+  }
 
   switch(args[0]) {
     case 'run':
